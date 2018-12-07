@@ -7,8 +7,8 @@ Kelompok 7
 - Rd Muh Saleh Idris
 - Rheza Khairullah Al Aziz
 
-- Game Snake JS
-![alt text](https://github.com/radensaleh/gamejs/blob/master/img/SS-Snake2.png)
+![alt text](https://github.com/radensaleh/gamejs/blob/master/img/Logo.png)
 
-- Game Tetris JS
+Screenshoot
+![alt text](https://github.com/radensaleh/gamejs/blob/master/img/SS-Snake2.png)
 ![alt text](https://github.com/radensaleh/gamejs/blob/master/img/SS-Tetris2.png)
