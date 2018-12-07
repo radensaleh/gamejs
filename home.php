@@ -205,7 +205,7 @@
 	        <button type="button" class="close" data-dismiss="modal">&times;</button>
 	        <h4 class="modal-title text-center"><span class="fa fa-check"></span> Delete Confirmation</h4>
 	      </div>
-	        <form id="modal-form-delete-scoreSnake" method="POST" action="deleteSnakeScore.php">
+	        <form id="modal-form-delete-scoreSnake" method="POST" action="proses/deleteSnakeScore.php">
 	      <div class="modal-body">
 	            <input type="hidden" name="username" id="cat_username" value="">
 	            <p><center>Are you sure you want to delete your Score ?</center></p>
@@ -229,7 +229,7 @@
 					<button type="button" class="close" data-dismiss="modal">&times;</button>
 					<h4 class="modal-title text-center"><span class="fa fa-check"></span> Delete Confirmation</h4>
 				</div>
-					<form id="modal-form-delete-scoreTetris" method="POST" action="deleteTetrisScore.php">
+					<form id="modal-form-delete-scoreTetris" method="POST" action="proses/deleteTetrisScore.php">
 				<div class="modal-body">
 							<input type="hidden" name="username" id="cat_usernameTT" value="">
 							<p><center>Are you sure you want to delete your Score ?</center></p>
@@ -254,7 +254,7 @@
 					<h4 class="modal-title"><span class="fas fa-cog"></span> Edit Account</h4>
 				</div>
 					<div class="modal-body">
-						<form id="modal-form-edit" action="edit.php" method="POST" role="form">
+						<form id="modal-form-edit" action="proses/edit.php" method="POST" role="form">
 							<div class="form-group has-success">
 								<label for="username" class="form-control-label">Username</label>
 								<input type="text" id="eusername" name="eusername" class="form-control" readonly/>
@@ -792,8 +792,6 @@
 
 	<script type="text/javascript">
 			$(document).ready(function (){
-					var formRegis = $('#modal-form-register');
-					var formLogin = $('#modal-form-login');
           var btnLogout = $('#logout');
 
 					//logout
@@ -814,99 +812,24 @@
                   'success'
                 ).then(OK => {
                   if(OK){
-										window.location.replace("logout.php");
+										window.location.replace("proses/logout.php");
                   }
                 })
               }
             })
           });
 
-					//regis form
-					formRegis.submit(function (e) {
-						e.preventDefault();
-
-						$.ajax({
-								url:formRegis.attr('action'),
-								type:formRegis.attr('method'),
-								data: formRegis.serialize(),
-								dataType: "json",
-								success: function( res ){
-									if( res.error == 0 ){
-										console.log(res);
-											$('#register').modal('hide');
-											swal(
-												'Success',
-												res.message,
-												'success'
-											).then(OK => {
-												if(OK){
-													location.reload();
-												}
-											});
-									}else{
-										$('#register').modal('hide');
-										swal(
-											'Failed',
-											res.message,
-											'error'
-										).then(OK => {
-												if(OK){
-													location.reload();
-												}
-										});
-									}
-								}
-						})
-					});
-
-					//login form
-					formLogin.submit(function (e) {
-						e.preventDefault();
-
-						$.ajax({
-								url:formLogin.attr('action'),
-								type:formLogin.attr('method'),
-								data: formLogin.serialize(),
-								dataType: "json",
-								success: function( res ){
-									if( res.error == 0 ){
-										console.log(res);
-											$('#login').modal('hide');
-											swal(
-												'Success',
-												res.message,
-												'success'
-											).then(OK => {
-												if(OK){
-													location.reload();
-												}
-											});
-									}else{
-										$('#login').modal('hide');
-										swal(
-											'Failed',
-											res.message,
-											'error'
-										).then(OK => {
-												if(OK){
-													location.reload();
-												}
-										});
-									}
-								}
-						})
-					});
 
 					//get value username
 					var username  = document.getElementById("username").value;
-
 					// ----------------- TOP SCORE SNAKE --------------------- //
 
 					//top score local 1st
 					var topUL1st    = document.getElementById("topUL1st");
 					var topUL1stt   = document.getElementById("topUL1stt");
+
 					$.ajax({
-							url:"topScoreLocal1st.php",
+							url:"localScore/topScoreLocal1st.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -919,7 +842,7 @@
 					//top score local 2nd
 					var topUL2nd    = document.getElementById("topUL2nd");
 					$.ajax({
-							url:"topScoreLocal2nd.php",
+							url:"localScore/topScoreLocal2nd.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -931,7 +854,7 @@
 					//top score local 2nd
 					var topUL3rd    = document.getElementById("topUL3rd");
 					$.ajax({
-							url:"topScoreLocal3rd.php",
+							url:"localScore/topScoreLocal3rd.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -944,7 +867,7 @@
 					var topUG1st = document.getElementById("topUG1st");
 					var topSG1st = document.getElementById("topSG1st");
 					$.ajax({
-							url:"topScoreGlobal1st.php",
+							url:"globalScore/topScoreGlobal1st.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -959,7 +882,7 @@
 					var topUG2nd = document.getElementById("topUG2nd");
 					var topSG2nd = document.getElementById("topSG2nd");
 					$.ajax({
-							url:"topScoreGlobal2nd.php",
+							url:"globalScore/topScoreGlobal2nd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -974,7 +897,7 @@
 					var topUG3rd = document.getElementById("topUG3rd");
 					var topSG3rd = document.getElementById("topSG3rd");
 					$.ajax({
-							url:"topScoreGlobal3rd.php",
+							url:"globalScore/topScoreGlobal3rd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -991,7 +914,7 @@
 					var TTtopUL1st    = document.getElementById("TTtopUL1st");
 					var TTtopUL1stt   = document.getElementById("TTtopUL1stt");
 					$.ajax({
-							url:"TTtopScoreLocal1st.php",
+							url:"localScore/TTtopScoreLocal1st.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -1004,7 +927,7 @@
 					//top score local 2nd
 					var TTtopUL2nd    = document.getElementById("TTtopUL2nd");
 					$.ajax({
-							url:"TTtopScoreLocal2nd.php",
+							url:"localScore/TTtopScoreLocal2nd.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -1016,7 +939,7 @@
 					//top score local 2nd
 					var TTtopUL3rd    = document.getElementById("TTtopUL3rd");
 					$.ajax({
-							url:"TTtopScoreLocal3rd.php",
+							url:"localScore/TTtopScoreLocal3rd.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -1029,7 +952,7 @@
 					var TTtopUG1st = document.getElementById("TTtopUG1st");
 					var TTtopSG1st = document.getElementById("TTtopSG1st");
 					$.ajax({
-							url:"TTtopScoreGlobal1st.php",
+							url:"globalScore/TTtopScoreGlobal1st.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1044,7 +967,7 @@
 					var TTtopUG2nd = document.getElementById("TTtopUG2nd");
 					var TTtopSG2nd = document.getElementById("TTtopSG2nd");
 					$.ajax({
-							url:"TTtopScoreGlobal2nd.php",
+							url:"globalScore/TTtopScoreGlobal2nd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1059,7 +982,7 @@
 					var TTtopUG3rd = document.getElementById("TTtopUG3rd");
 					var TTtopSG3rd = document.getElementById("TTtopSG3rd");
 					$.ajax({
-							url:"TTtopScoreGlobal3rd.php",
+							url:"globalScore/TTtopScoreGlobal3rd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1073,7 +996,7 @@
 					//count all user
 					var alluser = document.getElementById("alluser");
 					$.ajax({
-							url:"alluser.php",
+							url:"proses/alluser.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1086,7 +1009,7 @@
 					//count all user
 					var TTalluser = document.getElementById("TTalluser");
 					$.ajax({
-							url:"alluser.php",
+							url:"proses/alluser.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1102,7 +1025,7 @@
 					var iemail    = document.getElementById("iemail");
 					var ipassword = document.getElementById("ipassword");
 					$.ajax({
-							url:"myaccount.php",
+							url:"proses/myaccount.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",
@@ -1118,7 +1041,7 @@
 					var formEdit = $('#modal-form-edit');
 
 					$.ajax({
-							url:"myaccount.php",
+							url:"proses/myaccount.php",
 							type:"POST",
 							data:{username:username},
 							dataType:"json",

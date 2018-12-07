@@ -15,7 +15,7 @@ function Snake(){
   var score = 0; //score
   var newScore = 0;
 
-  var url  = "storeSnake.php";
+  var url  = "proses/storeSnake.php";
 
   var snake = []; //variable snake array
   snake[0] = { //membuat snake index ke 0 berada di x 5 dan y 10
@@ -360,7 +360,7 @@ function Tetris(){
           gameOver();
           cancelAnimationFrame(animReq);
 
-          var url = "storeTetris.php";
+          var url = "proses/storeTetris.php";
           var username = document.getElementById("username").value;
           var newScore = 0;
           newScore = player.score;

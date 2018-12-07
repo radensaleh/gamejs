@@ -144,7 +144,7 @@
 					<h4 class="modal-title"><span class="fas fa-sign-in-alt"></span> Login</h4>
 				</div>
 				<div class="modal-body">
-					<form id="modal-form-login" action="login.php" method="POST" role="form">
+					<form id="modal-form-login" action="proses/login.php" method="POST" role="form">
 						<div class="form-group has-success">
 							<label for="username" class="form-control-label">Username</label>
 							<input type="text" name="username" class="form-control" required/>
@@ -174,7 +174,7 @@
 					<h4 class="modal-title"><span class="fa fa-plus-circle"></span> Register</h4>
 				</div>
 				<div class="modal-body">
-					<form id="modal-form-register" action="register.php" method="POST" role="form">
+					<form id="modal-form-register" action="proses/register.php" method="POST" role="form">
 						<div class="form-group has-success">
 							<label for="username" class="form-control-label">Username</label>
 							<input type="text" name="username" class="form-control" required/>
@@ -902,7 +902,7 @@
 					var topUG1st = document.getElementById("topUG1st");
 					var topSG1st = document.getElementById("topSG1st");
 					$.ajax({
-							url:"topScoreGlobal1st.php",
+							url:"globalScore/topScoreGlobal1st.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -917,7 +917,7 @@
 					var topUG2nd = document.getElementById("topUG2nd");
 					var topSG2nd = document.getElementById("topSG2nd");
 					$.ajax({
-							url:"topScoreGlobal2nd.php",
+							url:"globalScore/topScoreGlobal2nd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -932,7 +932,7 @@
 					var topUG3rd = document.getElementById("topUG3rd");
 					var topSG3rd = document.getElementById("topSG3rd");
 					$.ajax({
-							url:"topScoreGlobal3rd.php",
+							url:"globalScore/topScoreGlobal3rd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -946,7 +946,7 @@
 					//count all user
 					var alluser = document.getElementById("alluser");
 					$.ajax({
-							url:"alluser.php",
+							url:"proses/alluser.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -959,7 +959,7 @@
 					//count all user
 					var TTalluser = document.getElementById("TTalluser");
 					$.ajax({
-							url:"alluser.php",
+							url:"proses/alluser.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -975,7 +975,7 @@
 					var TTtopUG1st = document.getElementById("TTtopUG1st");
 					var TTtopSG1st = document.getElementById("TTtopSG1st");
 					$.ajax({
-							url:"TTtopScoreGlobal1st.php",
+							url:"globalScore/TTtopScoreGlobal1st.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -990,7 +990,7 @@
 					var TTtopUG2nd = document.getElementById("TTtopUG2nd");
 					var TTtopSG2nd = document.getElementById("TTtopSG2nd");
 					$.ajax({
-							url:"TTtopScoreGlobal2nd.php",
+							url:"globalScore/TTtopScoreGlobal2nd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
@@ -1005,7 +1005,7 @@
 					var TTtopUG3rd = document.getElementById("TTtopUG3rd");
 					var TTtopSG3rd = document.getElementById("TTtopSG3rd");
 					$.ajax({
-							url:"TTtopScoreGlobal3rd.php",
+							url:"globalScore/TTtopScoreGlobal3rd.php",
 							type:"POST",
 							data:{},
 							dataType:"json",
